@@ -1,0 +1,39 @@
+@import "./../../style/variables.scss";
+
+button {
+  //max-width:20%;
+  cursor: pointer;
+  border:0;
+  padding:0;
+
+  img {
+     max-width: 100%;
+     max-height: 100%;
+  }
+}
+
+//Masonry
+.masonry {
+  columns: 6 200px;
+  column-gap: 1em;
+
+  button {
+    width: 150px;
+    background: $primary;
+    color: white;
+    margin: 0 1em 1em 0;
+    display: inline-block;
+    width: 100%;
+    //text-align: center;
+    //font-size: 2em;
+  }
+}
+
+
+
+//Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {
+   .masonry{
+      columns: 1;
+   }
+}
