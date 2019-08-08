@@ -10,6 +10,7 @@ import './style/App.scss';
 export default class App extends React.Component
 {
    state = {
+      galleryUrl: "http://via.placeholder.com",//dont use forward slash at the end! //http://via.placeholder.com | http://via.placeholder.com
       numberOfImages: 20,
       modal: {
          isOpen: false,
@@ -33,7 +34,7 @@ export default class App extends React.Component
                id: i.toString(),
                title: `face ${i}`,
                //src: `https://www.placecage.com/${rndmWidth}/${rndmHeight}`
-               src: `http://via.placeholder.com/${rndmWidth}x${rndmHeight}.png`
+               src: `${this.state.galleryUrl}/${rndmWidth}x${rndmHeight}.png`
             }
          )
       }
