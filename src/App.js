@@ -1,4 +1,3 @@
-//import logo from './logo.svg';
 import React from 'react';
 import Header from './components/Header';
 import NavPanel from './components/NavPanel';
@@ -10,7 +9,7 @@ import './style/App.scss';
 export default class App extends React.Component
 {
    state = {
-      galleryUrl: "http://via.placeholder.com",//dont use forward slash at the end! //http://via.placeholder.com | http://via.placeholder.com
+      galleryUrl: "https://www.placecage.com/{{w}}/{{h}}",//dont use forward slash at the end. //https://www.placecage.com/{{w}}/{{h}}  |  http://via.placeholder.com/{{w}}x{{h}}
       numberOfImages: 20,
       modal: {
          isOpen: false,
@@ -26,15 +25,18 @@ export default class App extends React.Component
       //on mount, load gallery into the state
       const newGallery_ar = [];
       for (let i = 0; i < this.state.numberOfImages; i++) {
-         var rndmHeight = Math.floor(Math.random() * 1280) + 500;
-         var rndmWidth = Math.floor(Math.random() * 1280) + 500;
+         //generate random height and width for the image between 500 and 1280
+         let rndmHeight = Math.floor(Math.random() * 1280) + 500;
+         let rndmWidth = Math.floor(Math.random() * 1280) + 500;
+         //build the url for this site
+         let imgUrl = this.state.galleryUrl.replace("{{w}}", rndmWidth).replace("{{h}}", rndmHeight);
 
          newGallery_ar.push(
             {
                id: i.toString(),
                title: `face ${i}`,
                //src: `https://www.placecage.com/${rndmWidth}/${rndmHeight}`
-               src: `${this.state.galleryUrl}/${rndmWidth}x${rndmHeight}.png`
+               src: imgUrl
             }
          )
       }

@@ -44,10 +44,11 @@
    margin:1em;
    margin-top:4em;
    overflow: auto;
-   height:80vh;
+   max-height:80vh; //the max it will span to will be 80vh (otherwise the image just fits)
+   text-align: center;
+   //-webkit-overflow-scrolling: touch;
 
    img{
-      //height:100%;
       background:white;
    }
 }

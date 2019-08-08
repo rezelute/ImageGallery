@@ -51,18 +51,6 @@ export default class ImageItem extends Component
    }
 }
 
-// function imagesLoaded(parentNode) {
-//    const imgElements = parentNode.querySelectorAll("img");
-//    for (const img of imgElements) {
-//      if (!img.complete) {
-//        return false;
-//      }
-//    }
-//    console.log("finished loading all");
-//    return true;
-//  }
-
-
 
 //PropTypes
 ImageItem.propTypes = {
