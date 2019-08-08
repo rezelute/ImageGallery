@@ -10,6 +10,7 @@ import './style/App.scss';
 export default class App extends React.Component
 {
    state = {
+      numberOfImages: 20,
       modal: {
          isOpen: false,
          imgSrc: "",
@@ -21,14 +22,15 @@ export default class App extends React.Component
    //mounting
    componentDidMount()
    {
+      //on mount, load gallery into the state
       const newGallery_ar = [];
-      for (let i = 0; i < 10; i++) {
-         var rndmHeight = Math.floor(Math.random() * 1280) + 500; // returns a random integer from 1 to 100 
-         var rndmWidth = Math.floor(Math.random() * 1280) + 500; // returns a random integer from 1 to 100 
+      for (let i = 0; i < this.state.numberOfImages; i++) {
+         var rndmHeight = Math.floor(Math.random() * 1280) + 500;
+         var rndmWidth = Math.floor(Math.random() * 1280) + 500;
 
          newGallery_ar.push(
             {
-               id: i,
+               id: i.toString(),
                title: `face ${i}`,
                //src: `https://www.placecage.com/${rndmWidth}/${rndmHeight}`
                src: `http://via.placeholder.com/${rndmWidth}x${rndmHeight}.png`
@@ -39,7 +41,7 @@ export default class App extends React.Component
       this.setState({ gallery: newGallery_ar });
    }
 
-   //handle image clicked
+   //image clicked > set the modal state to load the new image details
    handleImageClick = (clickedImgId) =>
    {
       //stop the body from scrolling in bg of modal
@@ -58,6 +60,7 @@ export default class App extends React.Component
       })
    }
 
+   //modal closed > remove the noscroll on body and reset modal state
    handleModalClose= () =>
    {
       //enable body scrolling again

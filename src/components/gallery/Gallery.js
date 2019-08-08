@@ -1,29 +1,37 @@
 import React, { Component } from 'react'
 import './gallery.scss';
 import PropTypes from "prop-types";
+import ImageItem from "./ImageItem";
 
 
 export default class Gallery extends Component
 {
-   handleClick = (imageId) =>
-   {
-      this.props.imageClick(imageId);
-   }
-
    render()
    {
-      const imageItems = this.props.gallery.map((imageItem) =>
-         <button key={imageItem.id} onClick={ e => this.handleClick(imageItem.id) }>
-            <img src={imageItem.src} alt={imageItem.title} />
-         </button>
-      );
+      // const imageItems = this.props.gallery.map((imageItem) =>
+      //    <button key={imageItem.id} onClick={e => this.handleClick(imageItem.id)}>
+      //       <p>imageItem: {imageItem.loaded}</p>
+      //       <img src={img_loading} alt="loading" />
+      //       <img
+      //          className="content"
+      //          src={imageItem.src} alt={imageItem.title}
+      //          onLoad={ e=> this.handleImageLoad(imageItem.id)}
+      //          // onError={ this.handleImageError(this)}
+      //       />
+      //    </button>
+      // );
 
       return (
-         <div className="gallery masonry">
-            {imageItems}
-            {/* <img src="https://www.placecage.com/200/300" alt=""/>
-            <img src="https://www.placecage.com/200/300" alt=""/>
-            <img src="https://www.placecage.com/200/300" alt=""/> */}
+         <div id="gallery" className="masonry">
+            {
+               this.props.gallery.map((imageItem) => (
+                  <div key={imageItem.id} >
+                     <ImageItem id={imageItem.id} title={imageItem.title} src={imageItem.src} imageClick={this.props.imageClick} />
+                  </div>
+               ))
+            }
+
+            {/* {imageItems} */}
          </div>
       )
    }
@@ -33,5 +41,5 @@ export default class Gallery extends Component
 //PropTypes
 Gallery.propTypes = {
    imageClick: PropTypes.func.isRequired,
-   gallery: PropTypes.array.isRequired,
+   gallery: PropTypes.array.isRequired
 }
